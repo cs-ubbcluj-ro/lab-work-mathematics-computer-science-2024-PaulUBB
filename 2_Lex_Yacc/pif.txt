@@ -1,0 +1,15 @@
+<VAR>
+<ID, x>
+<SEMI>
+<BEGIN>
+<ID, x>
+<ASSIGN>
+<CONST_INT, 5>
+<SEMI>
+<WRITE>
+<LPAREN>
+<ID, x>
+<RPAREN>
+<SEMI>
+<END>
+<DOT>

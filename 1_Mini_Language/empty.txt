@@ -1,0 +1,66 @@
+1. Language Definition
+
+1.1 Alphabet:
+- Uppercase letters (A-Z) and lowercase letters (a-z)
+- Decimal digits (0-9)
+- Special characters: `_`, `+`, `-`, `*`, `/`, `:=`, `<`, `<=`, `=`, `>=`, `<>`, `;`, `:`, `,`, `(`, `)`
+
+1.2 Lexical Components:
+
+1.2.1 Reserved Words:
+BEGIN, END, VAR, BOOLEAN, CHAR, INTEGER, READ, WRITE, IF, THEN, ELSE, WHILE, DO
+
+1.2.2 Operators:
++, -, *, /, :=, <, <=, =, >=, <>
+
+1.2.3 Separators:
+(, ), ;, space
+
+1.2.4 Identifiers:
+- Identifiers start with a letter and can be followed by letters and digits.
+- Rule (BNF):
+  identifier ::= letter {letter | digit}
+  letter ::= "A" | "B" | ... | "Z" | "a" | "b" | ... | "z"
+  digit ::= "0" | "1" | ... | "9"
+
+1.2.5 Constants:
+- Integer Constants:
+  integer ::= digit {digit}
+- Character Constants:
+  char ::= 'letter' | 'digit'
+- String Constants:
+  string ::= '"' {char} '"'
+
+2. Syntax Definition (BNF Notation)
+
+2.1 Program Structure:
+program ::= "VAR" decllist ";" cmpdstmt "."
+
+2.2 Declarations:
+decllist ::= declaration | declaration ";" decllist
+declaration ::= identifier ":" type
+type ::= "BOOLEAN" | "CHAR" | "INTEGER"
+
+2.3 Statements:
+cmpdstmt ::= "BEGIN" stmtlist "END"
+stmtlist ::= stmt | stmt ";" stmtlist
+stmt ::= simplstmt | structstmt
+
+2.4 Simple Statements:
+simplstmt ::= assignstmt | iostmt
+assignstmt ::= identifier ":=" expression
+iostmt ::= "READ" "(" identifier ")" | "WRITE" "(" identifier ")"
+
+2.5 Structured Statements:
+structstmt ::= cmpdstmt | ifstmt | whilestmt
+ifstmt ::= "IF" condition "THEN" stmt ["ELSE" stmt]
+whilestmt ::= "WHILE" condition "DO" stmt
+
+2.6 Expressions:
+expression ::= expression "+" term | term
+term ::= term "*" factor | factor
+factor ::= "(" expression ")" | identifier | constant
+
+2.7 Conditions:
+condition ::= expression relation expression
+relation ::= "<" | "<=" | "=" | "<>" | ">=" | ">"

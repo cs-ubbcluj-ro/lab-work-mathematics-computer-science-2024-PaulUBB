@@ -1,0 +1,24 @@
+VAR
+    n: INTEGER;
+    i: INTEGER;
+    is_prime: BOOLEAN;
+
+BEGIN
+    READ(n);        /* Input the value of n */
+    i := 2;
+
+    WHILE i <= n DO
+    BEGIN
+        is_prime := TRUE;
+
+        IF n MOD i = 0 THEN
+        BEGIN
+            is_prime := FALSE;
+        END;
+
+        WRITE(i);
+        i := i + 1;
+    END;
+
+END.
+
