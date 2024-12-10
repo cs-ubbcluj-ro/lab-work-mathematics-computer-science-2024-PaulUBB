@@ -1,0 +1,13 @@
+program -> statement_list
+statement_list -> statement | statement statement_list
+statement -> assignment_statement | conditional_statement | loop_statement | input_statement | output_statement
+assignment_statement -> identifier := expression ';'
+conditional_statement -> IF expression THEN statement_list ELSE statement_list ENDIF
+loop_statement -> WHILE expression DO statement_list ENDWHILE
+input_statement -> READ ( identifier ) ';'
+output_statement -> WRITE ( expression ) ';'
+expression -> term expression_prime
+expression_prime -> '+' term expression_prime | '-' term expression_prime | ε
+term -> factor term_prime
+term_prime -> '*' factor term_prime | '/' factor term_prime | ε
+factor -> NUMBER | identifier | ( expression )
