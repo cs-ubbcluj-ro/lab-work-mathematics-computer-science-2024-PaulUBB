@@ -1,6 +1,7 @@
-program -> statement_list
+program -> VAR statement_list | BEGIN statement_list END
 statement_list -> statement | statement statement_list
-statement -> assignment_statement | conditional_statement | loop_statement | input_statement | output_statement
+statement -> initial_statement | assignment_statement | conditional_statement | loop_statement | input_statement | output_statement
+initial_statement -> identifier : type ';' | identifier : type ';' initial_statement
 assignment_statement -> identifier := expression ';'
 conditional_statement -> IF expression THEN statement_list ELSE statement_list ENDIF
 loop_statement -> WHILE expression DO statement_list ENDWHILE
@@ -11,3 +12,8 @@ expression_prime -> '+' term expression_prime | '-' term expression_prime | ε
 term -> factor term_prime
 term_prime -> '*' factor term_prime | '/' factor term_prime | ε
 factor -> NUMBER | identifier | ( expression )
+NUMBER ->  digit | digit NUMBER
+digit -> 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
+identifier -> letter | letter identifier
+letter -> "a" | "b" | "c" | "d" | "e" | "f" | ... | "z"
+type -> BOOLEAN | INTEGER | CHAR
